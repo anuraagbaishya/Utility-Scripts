@@ -10,6 +10,6 @@ Currently it contains:
 * A script to open wikipedia links
 
 ###Please make sure you update the README after you add a script.
-###Please specify requirements for running the script as comments or in a separate file
+###Please specify requirements for running the script as comments or in a separate file.
 
 It will be highly appreciated if you can create a README for every script with usage instructions.
