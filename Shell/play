@@ -1,5 +1,4 @@
 #!/bin/bash
-/usr/bin/udisksctl mount -b /dev/sda6
-cd /media/anuraag/New\ Volume
+cd /path/to/music/folder
 file=$1$".mp3"
 rhythmbox "$(find . -type f -name "$file" -print -quit)"
