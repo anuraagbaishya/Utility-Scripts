@@ -8,6 +8,7 @@ Currently it contains:
 * A script to play the specified song in RhythmBox
 * A script to automatically login to University Wifi
 * A script to open wikipedia links
+* A script to convert characters to their ascii representation as well as one that prints an ascii table
 
 ###Please make sure you update the README after you add a script.
 ###Please specify requirements for running the script as comments or in a separate file.
