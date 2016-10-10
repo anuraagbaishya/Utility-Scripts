@@ -22,9 +22,9 @@ This script can be used directly from Terminal on Linux and Mac OSX
 ```./converter.js path/to/source/folder path/to/destination/folder```
 
 
-###LOCALHOST SERVER
+###JAVASCRIPT SERVER
 
-THis script on being run, instantiates a local server that runs on local host port no 3000.
+This script will instantiate a local server on the system's localhost port no 3000
 
 ###Requires
 
@@ -32,6 +32,5 @@ THis script on being run, instantiates a local server that runs on local host po
 
 ###Usage
 
-This script can be directly used from terminal
-
+This script can be directly run from the terminal
 node server.js
