@@ -20,3 +20,17 @@ All files will be inside a folder named "Converted" along with a random number a
 This script can be used directly from Terminal on Linux and Mac OSX
 
 ```./converter.js path/to/source/folder path/to/destination/folder```
+
+
+###JAVASCRIPT SERVER
+
+This script will instantiate a local server on the system's localhost port no 3000
+
+###Requires
+
+*node.js
+
+###Usage
+
+This script can be directly run from the terminal
+node server.js
