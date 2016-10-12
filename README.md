@@ -11,6 +11,7 @@ Currently it contains:
 * A script to convert characters to their ascii representation as well as one that prints an ascii table
 * A script to rename files with a preceding date for easier sorting
 * A script to find all your containers ip addresses
+* A script to create a directory filetree
 
 ###Please make sure you update the README after you add a script.
 ###Please specify requirements for running the script as comments or in a separate file.
