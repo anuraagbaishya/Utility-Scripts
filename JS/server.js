@@ -1,14 +1,14 @@
-var fs = require('fs');
-var path = require('path');
-var express = require('express');
-var bodyParser = require('body-parser');
+var fs = require("fs");
+var path = require("path");
+var express = require("express");
+var bodyParser = require("body-parser");
 var app = express();
 
-var COMMENTS_FILE = path.join(__dirname, 'comments.json');
+var COMMENTS_FILE = path.join(__dirname, "comments.json");
 
-app.set('port', (process.env.PORT || 3000));
+app.set("port", (process.env.PORT || 3000));
 
-app.use('/', express.static(path.join(__dirname, 'public')));
+app.use("/", express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -16,14 +16,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(function(req, res, next) {
     // Set permissive CORS header - this allows this server to be used only as
     // an API server in conjunction with something like webpack-dev-server.
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader("Access-Control-Allow-Origin", "*");
 
-    // Disable caching so we'll always get the latest comments.
-    res.setHeader('Cache-Control', 'no-cache');
+    // Disable caching so we"ll always get the latest comments.
+    res.setHeader("Cache-Control", "no-cache");
     next();
 });
 
-app.get('/api/comments', function(req, res) {
+app.get("/api/comments", function(req, res) {
   fs.readFile(COMMENTS_FILE, function(err, data) {
     if (err) {
       console.error(err);
@@ -33,7 +33,7 @@ app.get('/api/comments', function(req, res) {
   });
 });
 
-app.post('/api/comments', function(req, res) {
+app.post("/api/comments", function(req, res) {
   fs.readFile(COMMENTS_FILE, function(err, data) {
     if (err) {
       console.error(err);
@@ -41,7 +41,7 @@ app.post('/api/comments', function(req, res) {
     }
     var comments = JSON.parse(data);
     // NOTE: In a real implementation, we would likely rely on a database or
-    // some other approach (e.g. UUIDs) to ensure a globally unique id. We'll
+    // some other approach (e.g. UUIDs) to ensure a globally unique id. We"ll
     // treat Date.now() as unique-enough for our purposes.
     var newComment = {
       id: Date.now(),
@@ -60,6 +60,6 @@ app.post('/api/comments', function(req, res) {
 });
 
 
-app.listen(app.get('port'), function() {
-  console.log('Server started: http://localhost:' + app.get('port') + '/');
+app.listen(app.get("port"), function() {
+  console.log("Server started: http://localhost:" + app.get("port") + "/");
 });
