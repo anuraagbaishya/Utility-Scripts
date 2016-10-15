@@ -16,8 +16,8 @@ try:
 	br.form.find_control('username1')
 
 except:
-	br.form['username'] = '130921134'
-	br.form['password'] = '14395'
+	br.form['username'] = ''
+	br.form['password'] = ''
 	br.submit()
 
 
