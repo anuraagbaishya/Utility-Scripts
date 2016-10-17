@@ -16,6 +16,7 @@ Currently it contains:
 * A python script to reduce size of Images
 * A script to display a Quote of the day together with a quotes file
 * A script to get xkcd comics
+* A script for adding GPL text in all files of the project
 
 ###Please make sure you update the README after you add a script.
 ###Please specify requirements for running the script as comments or in a separate file.
