@@ -27,7 +27,7 @@ function findFn(req, res){
                 res.json(result);
                 db.close();
             });
-    }).catch((err) => {res.status(500).json(err)});    
+    }).catch((err) => {res.status(500).json(err);});    
 }
 
 function createFn(req, res){    
@@ -38,12 +38,12 @@ function createFn(req, res){
             res.json(result);
             db.close();
         });            
-    }).catch((err) => {res.status(500).json(err)});            
+    }).catch((err) => {res.status(500).json(err);});            
 }
 
 function deleteFn(req, res){ 
     var searchObj = {};
-    if(req.params.id) searchObj = { _id: req.params.id};   
+    if(req.params.id) {searchObj = { _id: req.params.id};}   
     dbConnection().then((db) => {
         db.collection(req.params.collection)
         .deleteOne(searchObj, (err, result) => {
@@ -51,7 +51,7 @@ function deleteFn(req, res){
             res.json(result);
             db.close();
         });            
-    }).catch((err) => {res.status(500).json(err)});            
+    }).catch((err) => {res.status(500).json(err);});            
 }
 
 function updateFn(req, res){
