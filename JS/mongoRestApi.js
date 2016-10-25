@@ -20,7 +20,7 @@ function dbConnection(){
 
 function findFn(req, res){    
     var searchObj = {};
-    if(req.params.id) {searchObj = { _id: mongo.ObjectID(req.params.id)};}
+    if(req.params.id) {searchObj = { _id: new mongo.ObjectID(req.params.id)};}
     dbConnection().then((db) => {
         db.collection(req.params.collection)
             .find(searchObj).toArray((err, result) => {
@@ -44,7 +44,7 @@ function createFn(req, res){
 
 function deleteFn(req, res){ 
     var searchObj = {};
-    if(req.params.id) {searchObj = { _id: mongo.ObjectID(req.params.id)};}   
+    if(req.params.id) {searchObj = { _id: new mongo.ObjectID(req.params.id)};}   
     dbConnection().then((db) => {
         db.collection(req.params.collection)
         .deleteOne(searchObj, (err, result) => {
@@ -57,9 +57,8 @@ function deleteFn(req, res){
 
 function updateFn(req, res){
     var searchObj = {};
-    if(req.params.id) {searchObj = { _id: mongo.ObjectID(req.params.id)};}
-    dbConnection().then((db) => {
-        console.log(searchObj, req.body.data)
+    if(req.params.id) {searchObj = { _id: new mongo.ObjectID(req.params.id)};}
+    dbConnection().then((db) => {        
         db.collection(req.params.collection)
         .updateOne(searchObj, {$set: req.body.data}, true, (err, result) => {
             if(err) { res.status(500).json(err); }                    
