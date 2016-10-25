@@ -19,7 +19,7 @@ function dbConnection(){
 
 function findFn(req, res){    
     var searchObj = {};
-    if(req.params.id) searchObj = { _id: req.params.id};
+    if(req.params.id) {searchObj = { _id: req.params.id};}
     dbConnection().then((db) => {
         db.collection(req.params.collection)
             .find(searchObj).toArray((err, result) => {
@@ -56,7 +56,7 @@ function deleteFn(req, res){
 
 function updateFn(req, res){
     var searchObj = {};
-    if(req.params.id) searchObj = { _id: req.params.id};
+    if(req.params.id) {searchObj = { _id: req.params.id};}
     dbConnection().then((db) => {
         db.collection(req.params.collection)
         .updateOne(searchObj, {$set: req.body.data}, (err, result) => {
@@ -64,7 +64,7 @@ function updateFn(req, res){
             res.json(result);
             db.close();
         });            
-    }).catch((err) => {res.status(500).json(err)});        
+    }).catch((err) => {res.status(500).json(err);});        
 }
 
 router.get("/:collection", findFn);
