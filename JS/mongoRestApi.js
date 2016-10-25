@@ -3,15 +3,15 @@ var app = express();
 var bodyParser = require("body-parser");
 var router = express.Router();
 var MongoClient = require("mongodb").MongoClient;
-var connectionUrl = "mongodb://localhost:27017/testdb"
+var connectionUrl = "mongodb://localhost:27017/testdb";
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 function dbConnection(){
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject) =>{
         MongoClient.connect(connectionUrl, function(err, db) {
-            if(err) reject(err)
+            if(err) reject(err);
             resolve(db);        
         });
     });    
@@ -20,61 +20,61 @@ function dbConnection(){
 function findFn(req, res){    
     var searchObj = {}
     if(req.params.id) searchObj = { _id: req.params.id};
-    dbConnection().then((db)=>{
+    dbConnection().then((db) =>{
         db.collection(req.params.collection)
-            .find(searchObj).toArray((err, result)=>{
+            .find(searchObj).toArray((err, result) =>{
                 if(err) res.status(500).json(err);
-                res.json(result)
+                res.json(result);
                 db.close();
             });
-    }).catch((err)=>{res.status(500).json(err)});    
+    }).catch((err) =>{res.status(500).json(err)});    
 }
 
 function createFn(req, res){    
-    dbConnection().then((db)=>{
+    dbConnection().then((db) =>{
         db.collection(req.params.collection)
-        .insertMany(req.body.data, (err, result)=>{
+        .insertMany(req.body.data, (err, result) =>{
             if(err) res.status(500).json(err);
-            res.json(result)
+            res.json(result);
             db.close();
         });            
-    }).catch((err)=>{res.status(500).json(err)});            
+    }).catch((err) =>{res.status(500).json(err)});            
 }
 
 function deleteFn(req, res){ 
     var searchObj = {}
     if(req.params.id) searchObj = { _id: req.params.id};   
-    dbConnection().then((db)=>{
+    dbConnection().then((db) =>{
         db.collection(req.params.collection)
-        .deleteOne(searchObj, (err, result)=>{
+        .deleteOne(searchObj, (err, result) =>{
             if(err) res.status(500).json(err);
-            res.json(result)
+            res.json(result);
             db.close();
         });            
-    }).catch((err)=>{res.status(500).json(err)});            
+    }).catch((err) =>{res.status(500).json(err)});            
 }
 
 function updateFn(req, res){
     var searchObj = {}
     if(req.params.id) searchObj = { _id: req.params.id};
-    dbConnection().then((db)=>{
+    dbConnection().then((db) =>{
         db.collection(req.params.collection)
-        .updateOne(searchObj, {$set: req.body.data}, (err, result)=>{
+        .updateOne(searchObj, {$set: req.body.data}, (err, result) =>{
             if(err) res.status(500).json(err);                    
             res.json(result);
             db.close();
         });            
-    }).catch((err)=>{res.status(500).json(err)});        
+    }).catch((err) =>{res.status(500).json(err)});        
 }
 
-router.get('/:collection', findFn);
-router.get('/:collection/:id', findFn);
-router.post('/:collection', createFn);
-router.put('/:collection/:id', updateFn);
-router.delete('/:collection/:id', deleteFn);
+router.get("/:collection", findFn);
+router.get("/:collection/:id", findFn);
+router.post("/:collection", createFn);
+router.put("/:collection/:id", updateFn);
+router.delete("/:collection/:id", deleteFn);
 
-app.use('/api/', router);
+app.use("/api/", router);
 
-app.listen(4040, ()=>{
+app.listen(4040, () =>{
     console.log("Listening on : 4040");
 });
