@@ -59,7 +59,7 @@ function updateFn(req, res){
     if(req.params.id) searchObj = { _id: req.params.id};
     dbConnection().then((db)=>{
         db.collection(req.params.collection)
-        .updateOne(req.params.id, {$set: req.body.data}, (err, result)=>{
+        .updateOne(searchObj, {$set: req.body.data}, (err, result)=>{
             if(err) res.status(500).json(err);                    
             res.json(result);
             db.close();
