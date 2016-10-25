@@ -9,62 +9,62 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 function dbConnection(){
-    return new Promise((resolve, reject) =>{
+    return new Promise((resolve, reject) => {
         MongoClient.connect(connectionUrl, function(err, db) {
-            if(err) reject(err);
+            if(err) { res.status(500).json(err); }
             resolve(db);        
         });
     });    
 }
 
 function findFn(req, res){    
-    var searchObj = {}
+    var searchObj = {};
     if(req.params.id) searchObj = { _id: req.params.id};
-    dbConnection().then((db) =>{
+    dbConnection().then((db) => {
         db.collection(req.params.collection)
-            .find(searchObj).toArray((err, result) =>{
-                if(err) res.status(500).json(err);
+            .find(searchObj).toArray((err, result) => {
+                if(err) { res.status(500).json(err); }
                 res.json(result);
                 db.close();
             });
-    }).catch((err) =>{res.status(500).json(err)});    
+    }).catch((err) => {res.status(500).json(err)});    
 }
 
 function createFn(req, res){    
-    dbConnection().then((db) =>{
+    dbConnection().then((db) => {
         db.collection(req.params.collection)
-        .insertMany(req.body.data, (err, result) =>{
-            if(err) res.status(500).json(err);
+        .insertMany(req.body.data, (err, result) => {
+            if(err) { res.status(500).json(err); }
             res.json(result);
             db.close();
         });            
-    }).catch((err) =>{res.status(500).json(err)});            
+    }).catch((err) => {res.status(500).json(err)});            
 }
 
 function deleteFn(req, res){ 
-    var searchObj = {}
+    var searchObj = {};
     if(req.params.id) searchObj = { _id: req.params.id};   
-    dbConnection().then((db) =>{
+    dbConnection().then((db) => {
         db.collection(req.params.collection)
-        .deleteOne(searchObj, (err, result) =>{
-            if(err) res.status(500).json(err);
+        .deleteOne(searchObj, (err, result) => {
+            if(err) { res.status(500).json(err); }
             res.json(result);
             db.close();
         });            
-    }).catch((err) =>{res.status(500).json(err)});            
+    }).catch((err) => {res.status(500).json(err)});            
 }
 
 function updateFn(req, res){
-    var searchObj = {}
+    var searchObj = {};
     if(req.params.id) searchObj = { _id: req.params.id};
-    dbConnection().then((db) =>{
+    dbConnection().then((db) => {
         db.collection(req.params.collection)
-        .updateOne(searchObj, {$set: req.body.data}, (err, result) =>{
-            if(err) res.status(500).json(err);                    
+        .updateOne(searchObj, {$set: req.body.data}, (err, result) => {
+            if(err) { res.status(500).json(err); }                    
             res.json(result);
             db.close();
         });            
-    }).catch((err) =>{res.status(500).json(err)});        
+    }).catch((err) => {res.status(500).json(err)});        
 }
 
 router.get("/:collection", findFn);
@@ -75,6 +75,6 @@ router.delete("/:collection/:id", deleteFn);
 
 app.use("/api/", router);
 
-app.listen(4040, () =>{
+app.listen(4040, () => {
     console.log("Listening on : 4040");
 });
