@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 function dbConnection(){
     return new Promise((resolve, reject) => {
         MongoClient.connect(connectionUrl, function(err, db) {
-            if(err) { res.status(500).json(err); }
+            if(err) { reject(err); }
             resolve(db);        
         });
     });    
