@@ -1,8 +1,9 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-var router = express.Router();
-var MongoClient = require("mongodb").MongoClient;
+var router = new express.Router();
+var mongo = require("mongodb");
+var MongoClient = mongo.MongoClient;
 var connectionUrl = "mongodb://localhost:27017/testdb";
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,7 +20,7 @@ function dbConnection(){
 
 function findFn(req, res){    
     var searchObj = {};
-    if(req.params.id) {searchObj = { _id: req.params.id};}
+    if(req.params.id) {searchObj = { _id: mongo.ObjectID(req.params.id)};}
     dbConnection().then((db) => {
         db.collection(req.params.collection)
             .find(searchObj).toArray((err, result) => {
@@ -43,7 +44,7 @@ function createFn(req, res){
 
 function deleteFn(req, res){ 
     var searchObj = {};
-    if(req.params.id) {searchObj = { _id: req.params.id};}   
+    if(req.params.id) {searchObj = { _id: mongo.ObjectID(req.params.id)};}   
     dbConnection().then((db) => {
         db.collection(req.params.collection)
         .deleteOne(searchObj, (err, result) => {
@@ -56,10 +57,11 @@ function deleteFn(req, res){
 
 function updateFn(req, res){
     var searchObj = {};
-    if(req.params.id) {searchObj = { _id: req.params.id};}
+    if(req.params.id) {searchObj = { _id: mongo.ObjectID(req.params.id)};}
     dbConnection().then((db) => {
+        console.log(searchObj, req.body.data)
         db.collection(req.params.collection)
-        .updateOne(searchObj, {$set: req.body.data}, (err, result) => {
+        .updateOne(searchObj, {$set: req.body.data}, true, (err, result) => {
             if(err) { res.status(500).json(err); }                    
             res.json(result);
             db.close();
