@@ -18,6 +18,7 @@ Currently it contains:
 * A script to get xkcd comics
 * A script to check for arguments in a bash command with bash color definitions
 * A script for adding GPL text in all files of the project
+* A  bash script which implements a simple word guessing game a la hangman. 
 
 ###Please make sure you update the README after you add a script.
 ###Please specify requirements for running the script as comments or in a separate file.
