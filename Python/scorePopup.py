@@ -1,5 +1,5 @@
 from gi.repository import Notify
-from bs4 import BeautifulSoup 
+from bs4 import BeautifulSoup
 import urllib2
 import time
 url = "https://cricket.yahoo.com/cricket-live-score-zimbabwe-vs-sri-lanka_195150"
@@ -13,7 +13,7 @@ curr_score  =  curr_score + ' '
 print('running')
 while (True):
     page=urllib2.urlopen(url)
-    soup = BeautifulSoup(page.read(),'html.parser') 
+    soup = BeautifulSoup(page.read(),'html.parser')
     f=0
     for score in soup.find_all(class_='scr'):
         curr_score= curr_score  + score.get_text()
