@@ -6,6 +6,8 @@ Currently it contains:
 
 * A Markdown to HTML Converter using node.js and showdown.js
 * A script to play the specified song in RhythmBox
+* A script to get details of a movie specified as a parameter
+* A script to mass manipulate files
 * A script to automatically login to University Wifi
 * A script to open wikipedia links
 * A script to convert characters to their ascii representation as well as one that prints an ascii table
