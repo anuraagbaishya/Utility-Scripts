@@ -1,11 +1,5 @@
 #!/bin/sh
-# sw.sh
-# A command-line Stopwatch
-#https://github.com/anuraagbaishya/Utility-Scripts/issues/1
-# Author: Pádraig Brady
-#    http://www.pixelbeat.org/scripts/sw
-#    (Minor reformatting by ABS Guide author.)
-#    Used in ABS Guide with script author's permission.
+
 # Notes:
 #    This script starts a few processes per lap, in addition to
 #    the shell loop processing, so the assumption is made that
@@ -16,24 +10,7 @@
 #    (erroneously) entered before it (on the same line).
 #    '?' since not generating a signal may be slightly delayed
 #    on heavily loaded systems.
-#    Lap timings on ubuntu may be slightly delayed due to:
-#    https://bugs.launchpad.net/bugs/62511
-# Changes:
-#    V1.0, 23 Aug 2005, Initial release
-#    V1.1, 26 Jul 2007, Allow both splits and laps from single invocation.
-#                       Only start timer after a key is pressed.
-#                       Indicate lap number
-#                       Cache programs at startup so there is less error
-#                       due to startup delays.
-#    V1.2, 01 Aug 2007, Work around `date` commands that don't have
-#                       nanoseconds.
-#                       Use stty to change interrupt keys to space for
-#                       laps etc.
-#                       Ignore other input as it causes problems.
-#    V1.3, 01 Aug 2007, Testing release.
-#    V1.4, 02 Aug 2007, Various tweaks to get working under ubuntu
-#                       and Mac OS X.
-#    V1.5, 27 Jun 2008, set LANG=C as got vague bug report about it.
+
 
 export LANG=C
 
