@@ -1,6 +1,6 @@
-##Scripts
+## Scripts
 
-####This repository contains simple utility scripts.
+#### This repository contains simple utility scripts.
 
 Currently it contains:
 
@@ -20,8 +20,9 @@ Currently it contains:
 * A script to get xkcd comics
 * A script to check for arguments in a bash command with bash color definitions
 * A script for adding GPL text in all files of the project
+* A python 3 script to perform AES Encryption and Decryption
 
-###Please make sure you update the README after you add a script.
-###Please specify requirements for running the script as comments or in a separate file.
+### Please make sure you update the README after you add a script.
+### Please specify requirements for running the script as comments or in a separate file.
 
 It will be highly appreciated if you can create a README for every script with usage instructions.
