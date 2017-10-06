@@ -20,6 +20,7 @@ Currently it contains:
 * A script to get xkcd comics
 * A script to check for arguments in a bash command with bash color definitions
 * A script for adding GPL text in all files of the project
+* A  bash script which implements a simple word guessing game a la hangman. 
 * A script for popups of live cricket score from Yahoo! cricket
 * A python 3 script to perform AES Encryption and Decryption
 
