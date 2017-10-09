@@ -2,11 +2,15 @@
 
 # Getting the input .iso file name
 echo "Choose the ISO File:"
-ls *.iso -1 | cat -n 
+# Showing the devices
+ls *.iso -1 | cat -n
+
+# Reading the number of the file
 echo -n "Insert number: "
 read image_number
-a=1
 
+# Saving the name of the iso in $image
+a=1
 for i in $(ls *.iso -1)
 do
     if [ $image_number -eq $a ]
@@ -29,7 +33,7 @@ echo "You chose: $image"
 
 echo "Which is the device you want to burn the ISO file on?"
 
-# Lists the file systems
+# Listing the file systems and reading the input name
 df | grep /dev/sd
 echo "Insert device(for example, /dev/sdb1):"
 read partition
@@ -41,13 +45,15 @@ then
     exit 3
 fi
 
-device="$(echo $partition | sed s'/.$//')"
+device="${partition%?}"
 
 # Device confirmation
 echo "Are you sure $device($partition) is the device you want to burn your ISO file on?[y/n]"
 while true
 do
     read answer
+
+    # If answer is yes, continue
     if [[ $answer == "yes" || $answer == "y" ]]
     then
         # Unmounting the partition 
@@ -60,7 +66,8 @@ do
         echo "Done!"
         break
     fi
-
+    
+    # If answer is no, exit
     if [[ $answer == "no" || $answer == "n" ]]
     then
         break
