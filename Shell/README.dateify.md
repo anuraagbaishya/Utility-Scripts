@@ -1,4 +1,4 @@
-##Dateify
+## Dateify
 
 Dateify renames files with a preceding date, so they can be sorted easier
 

@@ -1,2 +1,2 @@
-## mass_manip description
+## Mass_manip description
 This simple script is used to mass manipulate files.

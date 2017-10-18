@@ -1,6 +1,6 @@
-####This is a small bash function that can be useful if you want to find all your containers ip addresses.
+#### This is a small bash function that can be useful if you want to find all your containers ip addresses.
 
-***Instructions:*** 
+**Instructions:** 
 
 1) Add this function to your ```~/.bashrc```, ```~/.bash_profile``` or ```~/.profile```;
 
@@ -8,7 +8,7 @@
 
 3) run ```ipdock``` command to list ip addresses of all your containers.
 
-***Example:***
+**Example:**
 ```
 # ipdock
 IP ADDRESS       CONTAINER ID      IMAGE      COMMAND      CREATED            STATUS            PORTS     NAMES
