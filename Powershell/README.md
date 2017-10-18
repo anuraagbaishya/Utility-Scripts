@@ -1,9 +1,9 @@
 
-####Sort content
+## Sort content
 
 This script takes a textfile and gives a sorted version with only unique lines as the output.
-The input file is named unsorted.txt and the output file created will be named sorted.txt.
+The input file is named unsorted.txt and the output file created will be named `sorted.txt`.
 
-####Usage
+## Usage
 
-& "Sort the content of a text file.ps1"
+- Sort the content of a text `file.ps1`
