@@ -1,13 +1,14 @@
-create a tree structure out of a directory. usefull for mapping complicated directory structures.
+create a tree structure out of a directory. Useful for mapping complicated directory structures.
 put in path somewhere and run it.
 
-If i execute it inside the Utility-Scripts directory it gives 
+If I execute it inside the Utility-Scripts directory it gives 
 
- |-JS
- |-Python
- |-Shell
+```
+project   
+└─── js
+└─── python
+└─── shell
+```
 
-
-
- also useful as an alias.
+Also useful as an alias.
 
