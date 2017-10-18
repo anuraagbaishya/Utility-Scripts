@@ -28,9 +28,10 @@ This script will instantiate a local server on the system's localhost port no 30
 
 ### Requires
 
-*node.js
+* node.js
 
 ### Usage
 
 This script can be directly run from the terminal
-node server.js
+
+`node server.js`
